@@ -1,0 +1,13 @@
+main\.o
+roogle_hack
+
+.project
+.classpath
+.settings
+.externalToolBuilders
+
+libs
+obj
+bin
+gen
+
