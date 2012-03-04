@@ -59,7 +59,7 @@ int main(void)
       return 0;
   }
   MotionManager::GetInstance()->AddModule((MotionModule*)Head::GetInstance());
-  MotionManager::GetInstance()->AddModule((MotionModule*)Walking::GetInstance());
+  //MotionManager::GetInstance()->AddModule((MotionModule*)Walking::GetInstance());
   LinuxMotionTimer::Initialize(MotionManager::GetInstance()); 
   /////////////////////////////////////////////////////////////////////
 
@@ -107,8 +107,15 @@ int main(void)
     Point2D lookAt(-1, -1);
     Point2D walkTo(-1, -1);
 
-	if (nbXFound > 0) {
-	  lookAt = positions[0];
+	if (nbXFound > 3) {
+	  int SumX = 0, SumY = 0;
+	  for ( int i = 0 ; i < nbXFound ; i++ ) {
+	    SumX += positions[i].X ;
+		SumY += positions[i].Y;
+      }
+
+	  lookAt.X = SumX / nbXFound;
+	  lookAt.Y = SumY / nbXFound;
 	  walkTo = lookAt;
 	}
 
